@@ -2,25 +2,29 @@
 # takes random number and stress a server
 # component based on that using stress-ng
 
-random_number=$((RANDOM % 6))
+while true; do
+
+	random_number=$((RANDOM % 6))
 
 # Takes random number and stresses a certain hardware component
 # based on the number, 1 = cpu, 2 = memory, 3 = filesystem,
 # 4 = input/output, 5 = network interface, 0 = pass
 
-case $random_number in 
-	1)
-		stress-ng --cpu 0 --timeout 10s ;;
-	2)
-		stress-ng --vm 2 --vm-bytes 250M --timeout 10s ;;
-	3)
-		stress-ng --fs 3 --timeout 10s ;;
-	4)
-		stress-ng --io 2 --timeout 10s ;;
-	5)
-		stress-ng --net 4 --timeout 10s ;;
-	*)
-		: ;;
-esac
+	case $random_number in
+		1)
+			stress-ng --cpu 2 --timeout 10s ;;
+		2)
+			stress-ng --vm 2 --vm-bytes 350M --timeout 10s ;;
+		3)
+			stress-ng --filesystem-stressor 1 --filesystem-stressor-ops 2500 --timeout 15s ;;
+		4)
+			stress-ng --io 2 --timeout 10s ;;
+		5)
+			stress-ng --netdev 2 --timeout 10s ;;
+		*)
+			: ;;
+	esac
+	sleep 10
+done
 
-# Everything in here is both unfinished and Untested
+# Everything in here is being tested.
