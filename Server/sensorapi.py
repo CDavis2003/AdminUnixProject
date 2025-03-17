@@ -8,10 +8,11 @@ server = Server()
 
 @app.route('/get_data', methods=['GET'])
 def get_data():
+    server.update_psutils()
     metrics = {
         'cpuUsage': server.cpu_usage(),
         'memoryAvailable': server.memory.available,
-        'swapAvailable': server.swap.available,
+        'swapAvailable': server.swap.free,
         'diskFree': server.disk.free,
         'ioWriteCount': server.diskIO.write_count,
         'ioReadCount': server.diskIO.read_count,

@@ -1,0 +1,777 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.4" author="PygubuDesigner 0.39.3">
+  <project>
+    <settings>
+      <setting id="name">dashboardUI</setting>
+      <setting id="description">UI of server monitoring dashboard</setting>
+      <setting id="module_name">dashboardUI</setting>
+      <setting id="template">application</setting>
+      <setting id="main_widget">toplevel1</setting>
+      <setting id="main_classname">dashUI</setting>
+      <setting id="main_menu" />
+      <setting id="output_dir">GIT\AdminUnixMid\AdminUnixProject\Client</setting>
+      <setting id="output_dir2" />
+      <setting id="import_tkvariables">True</setting>
+      <setting id="use_ttk_styledefinition_file">False</setting>
+      <setting id="use_i18n">False</setting>
+      <setting id="all_ids_attributes">False</setting>
+      <setting id="generate_code_onsave">False</setting>
+      <setting id="use_window_centering_code">False</setting>
+      <setting id="ttk_style_definition_file" />
+    </settings>
+    <customwidgets />
+  </project>
+  <object class="tk.Toplevel" id="toplevel1">
+    <property name="background">#ffffff</property>
+    <property name="geometry">768x576</property>
+    <child>
+      <object class="ttk.Frame" id="frame_main" named="True">
+        <layout manager="pack">
+          <property name="expand">true</property>
+          <property name="fill">both</property>
+          <property name="padx">5</property>
+          <property name="pady">5</property>
+          <property name="side">top</property>
+        </layout>
+        <child>
+          <object class="ttk.Label" id="hostname" named="True">
+            <property name="anchor">n</property>
+            <property name="foreground">#cd0532</property>
+            <property name="justify">center</property>
+            <property name="relief">raised</property>
+            <property name="text" translatable="yes">hostname</property>
+            <property name="textvariable">string:lbl_hostname</property>
+            <layout manager="pack">
+              <property name="anchor">n</property>
+              <property name="expand">false</property>
+              <property name="fill">x</property>
+              <property name="ipadx">1</property>
+              <property name="ipady">1</property>
+              <property name="padx">3</property>
+              <property name="pady">3</property>
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="data_display" named="True">
+            <property name="height">200</property>
+            <property name="width">200</property>
+            <layout manager="pack">
+              <property name="anchor">nw</property>
+              <property name="side">left</property>
+            </layout>
+            <child>
+              <object class="ttk.Frame" id="cpu_frame" named="True">
+                <property name="height">200</property>
+                <property name="relief">groove</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="padx">5</property>
+                  <property name="pady">5</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="lbl_cpu_perc_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="compound">top</property>
+                    <property name="text" translatable="yes">CPU Usage (%):</property>
+                    <layout manager="pack">
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_cpu_perc_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="compound">top</property>
+                    <property name="text" translatable="yes">XXX%</property>
+                    <property name="textvariable">double:lbl_cpu_perc</property>
+                    <layout manager="pack">
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="mem_frame" named="True">
+                <property name="height">200</property>
+                <property name="relief">groove</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="padx">5</property>
+                  <property name="pady">5</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="lbl_mem_perc_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">RAM Usage (%):</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_mem_perc_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">XXX%</property>
+                    <property name="textvariable">double:ram_usage_perc</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_mem_avbl_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">RAM Avbl (GB)</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_mem_avbl_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">XXXX</property>
+                    <property name="textvariable">double:lbl_ram_avbl</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_mem_used_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">RAM Used (GB)</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_mem_used_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">XXXX</property>
+                    <property name="textvariable">double:lbl_ram_used</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_mem_tot_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">RAM Total (GB)</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">4</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_mem_tot_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">XXXX</property>
+                    <property name="textvariable">double:lbl_ram_tot</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">4</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="disk_frame" named="True">
+                <property name="height">200</property>
+                <property name="relief">groove</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="padx">5</property>
+                  <property name="pady">5</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="lbl_disk_perc_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">DISK Usage (%):</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_disk_perc_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">XXX%</property>
+                    <property name="textvariable">double:lbl_disk_perc</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_disk_free_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">DISK Free (GB</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_disk_free_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">XXXX</property>
+                    <property name="textvariable">double:lbl_disk_free</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_disk_used_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">DISK Used (GB)</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_disk_used_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">XXXX</property>
+                    <property name="textvariable">double:lbl_disk_used</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_disk_total_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">DISK Total (GB)</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_disk_total_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="relief">flat</property>
+                    <property name="takefocus">false</property>
+                    <property name="text" translatable="yes">XXXX</property>
+                    <property name="textvariable">double:lbl_disk_tot</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="swap_frame" named="True">
+                <property name="height">200</property>
+                <property name="relief">groove</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="padx">5</property>
+                  <property name="pady">5</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="lbl_swap_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">SWAP Usage (%):</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_swap_perc_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="justify">right</property>
+                    <property name="text" translatable="yes">XXX%</property>
+                    <property name="textvariable">string:lbl_swap_perc</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_swap_free_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="cursor">arrow</property>
+                    <property name="relief">flat</property>
+                    <property name="takefocus">false</property>
+                    <property name="text" translatable="yes">SWAP Free (GB)</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_swap_free_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">XXXX</property>
+                    <property name="textvariable">double:lbl_swap_free</property>
+                    <layout manager="grid">
+                      <property name="column">01</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_swap_used_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">SWAP Used (GB)</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_swap_used_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">XXXX</property>
+                    <property name="textvariable">double:lbl_swap_used</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_swap_tot_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">SWAP Total (GB)</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_swap_tot_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">XXXX</property>
+                    <property name="textvariable">double:lbl_swap_tot</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="io_frame" named="True">
+                <property name="height">200</property>
+                <property name="relief">groove</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="padx">5</property>
+                  <property name="pady">5</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="lbl_io_wops_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="cursor">arrow</property>
+                    <property name="justify">left</property>
+                    <property name="text" translatable="yes">IO Writes</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_io_wops_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">XXXXXXXX</property>
+                    <property name="textvariable">int:lbl_io_writes</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_io_rops_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">IO Reads</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_io_rops_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">XXXXXXXX</property>
+                    <property name="textvariable">int:lbl_io_reads</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_io_wbytes_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">IO Write (GB)</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_io_wbytes_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">XXXX</property>
+                    <property name="textvariable">double:lbl_io_wbyte</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_io_rbytes_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">IO Read (GB)</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_io_rbytes_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="font">TkDefaultFont</property>
+                    <property name="text" translatable="yes">XXXX</property>
+                    <property name="textvariable">double:lbl_io_rbyte</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="net_frame" named="True">
+                <property name="height">200</property>
+                <property name="relief">groove</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="padx">5</property>
+                  <property name="pady">5</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="lbl_net_precv_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">NET P-Recv</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_net_precv_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="foreground">#000000</property>
+                    <property name="text" translatable="yes">XXXXXXXX</property>
+                    <property name="textvariable">int:lbl_net_precv</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_net_psent_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="cursor">arrow</property>
+                    <property name="text" translatable="yes">NET P-Sent</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_net_psent_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">XXXXXXXX</property>
+                    <property name="textvariable">int:lbl_net_psent</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_net_up_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="foreground">#000000</property>
+                    <property name="text" translatable="yes">NET Up(GB)</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_net_up_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">XXXX</property>
+                    <property name="textvariable">double:lbl_net_up</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_net_down_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">NET Down(GB)</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_net_down_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">XXXX</property>
+                    <property name="textvariable">double:lbl_net_down</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_net_errin_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">NET Err In</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">4</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_net_errin_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">XXXXXX</property>
+                    <property name="textvariable">int:lbl_net_errin</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">4</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_net_errout_tag" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="text" translatable="yes">NET Err Out</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">5</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lbl_net_errout_val" named="True">
+                    <property name="background">#ffffff</property>
+                    <property name="relief">flat</property>
+                    <property name="text" translatable="yes">XXXXXX</property>
+                    <property name="textvariable">int:lbl_net_errout</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">5</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="pygubu.builder.widgets.scrolledframe" id="scrolledframe1">
+            <property name="scrolltype">both</property>
+            <property name="usemousewheel">false</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">both</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Frame" id="frame_graph" named="True">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="side">right</property>
+                </layout>
+                <containerlayout manager="grid">
+                  <property name="anchor">n</property>
+                </containerlayout>
+                <child>
+                  <object class="tk.Canvas" id="cnvs_perc_readout" named="True">
+                    <property name="relief">flat</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">10</property>
+                      <property name="pady">10</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
