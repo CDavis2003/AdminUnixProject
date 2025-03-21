@@ -1,13 +1,9 @@
 #!/usr/bin/python3
-import pathlib
-import tkinter as tk
-import pygubu
+#from pygubu.plugins.customtkinter.ctkbase import color
 
 from collector import get_initial, get_data
 from dashboardUIui import dashUIUI
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
-from datetime import datetime, time
+
 
 class dashUI(dashUIUI):
     def __init__(self, master=None):
@@ -19,18 +15,27 @@ class dashUI(dashUIUI):
         self.lbl_swap_tot.set(round(int(initial_dict.get('swapTotal')) / (1024**3), 3))
         self.lbl_disk_tot.set(round(int(initial_dict.get('diskTotal')) / (1024**3), 3))
 
-    def get_time(self):
-        current_time = datetime.now()
-        time_val = current_time.strftime("%H:%M:%S")
-        return time_val
+    def check_cpu_threshold(self):
+        if self.lbl_cpu_perc.get() >= self.cpu_threshold.get():
+            self.cpu_tag.config(background='#eb0214')
+        else:
+            self.cpu_tag.config(background="#ffffff")
+
+    def check_mem_threshold(self):
+        if self.ram_usage_perc.get() >= self.mem_threshold.get():
+            self.ram_tag.config(background='#eb0214')
+        else:
+            self.ram_tag.config(background="#ffffff")
 
     def update_ui(self):
         data_dict = get_data()
         self.lbl_cpu_perc.set(float(data_dict.get('cpuUsage')))
+        self.check_cpu_threshold()
 
         self.lbl_ram_avbl.set(round(int(data_dict.get('memoryAvailable')) / (1024**3), 3))
         self.lbl_ram_used.set(round((self.lbl_ram_tot.get() - self.lbl_ram_avbl.get()), 3))
         self.ram_usage_perc.set(round(self.lbl_ram_used.get() / self.lbl_ram_tot.get() * 100, 2))
+        self.check_mem_threshold()
 
         self.lbl_swap_free.set(round(int(data_dict.get('swapAvailable')) / (1024**3), 3))
         self.lbl_swap_used.set(round(self.lbl_swap_tot.get() - self.lbl_swap_free.get(), 3))
@@ -67,15 +72,12 @@ class dashUI(dashUIUI):
 
     def create_graphs(self):
         self.fig_perc.suptitle('Metrics')
-        #plt.subplots_adjust(hspace=1)
 
         self.axes[0,0].set_title('CPU Usage %')
         self.axes[0,1].set_title('RAM Usage %')
         self.axes[1,0].set_title('Net Packets')
         self.axes[1,1].set_title('Net Bytes')
         self.axes[1,2].set_title('IO Ops')
-
-        # self.axes[0,0].plot(self.timestamp, self.cpuData)
 
         self.fig_perc.canvas.draw()
 

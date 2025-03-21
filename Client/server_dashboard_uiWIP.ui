@@ -76,7 +76,7 @@
                 <child>
                   <object class="ttk.Label" id="lbl_cpu_perc_tag" named="True">
                     <property name="background">#ffffff</property>
-                    <property name="compound">top</property>
+                    <property name="compound">bottom</property>
                     <property name="text" translatable="yes">CPU Usage (%):</property>
                     <layout manager="pack">
                       <property name="padx">4</property>
@@ -95,6 +95,22 @@
                       <property name="padx">4</property>
                       <property name="pady">2</property>
                       <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="ent_cpu_threshold" named="True">
+                    <property name="text" translatable="yes">0100</property>
+                    <property name="textvariable">double:cpu_threshold</property>
+                    <property name="validate">key</property>
+                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P">validate_input_perc</property>
+                    <property name="width">6</property>
+                    <layout manager="pack">
+                      <property name="expand">true</property>
+                      <property name="fill">both</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="side">top</property>
                     </layout>
                   </object>
                 </child>
@@ -209,6 +225,21 @@
                       <property name="padx">4</property>
                       <property name="pady">2</property>
                       <property name="row">4</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="ent_mem_threshold" named="True">
+                    <property name="text" translatable="yes">0100</property>
+                    <property name="textvariable">double:mem_threshold</property>
+                    <property name="validate">key</property>
+                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P">validate_input_perc</property>
+                    <property name="width">6</property>
+                    <layout manager="grid">
+                      <property name="column">2</property>
+                      <property name="padx">4</property>
+                      <property name="pady">2</property>
+                      <property name="row">0</property>
                     </layout>
                   </object>
                 </child>
